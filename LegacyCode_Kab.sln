@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.36603.0 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegacyCode_Kab", "LegacyCode_Kab.csproj", "{B27783ED-0633-4A05-91E9-BD1734A3D5E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateCalc_Realization", "..\DateCalc_Realization\DateCalc_Realization.csproj", "{1533C38C-6769-4734-8789-C2FFA787A9CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B27783ED-0633-4A05-91E9-BD1734A3D5E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B27783ED-0633-4A05-91E9-BD1734A3D5E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B27783ED-0633-4A05-91E9-BD1734A3D5E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1533C38C-6769-4734-8789-C2FFA787A9CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1533C38C-6769-4734-8789-C2FFA787A9CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1533C38C-6769-4734-8789-C2FFA787A9CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1533C38C-6769-4734-8789-C2FFA787A9CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
