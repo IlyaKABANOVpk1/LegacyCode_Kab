@@ -64,7 +64,7 @@
             int mm = int.Parse(month);
             int yyyy = int.Parse(year);
             DateTime dt = new DateTime(yyyy, mm, dd);
-            return dt.DayOfWeek.ToString();
+            return dt.ToString("dddd"); // баг 1: возвращает день недели на литовском/английском в зависимости от системы
         }
 
         public int calcDiff(string d1, string d2)
@@ -80,7 +80,7 @@
             if (!isVal(day1, month1, year1) || !isVal(day2, month2, year2)) return -1;
             DateTime dt1 = new DateTime(int.Parse(year1), int.Parse(month1), int.Parse(day1));
             DateTime dt2 = new DateTime(int.Parse(year2), int.Parse(month2), int.Parse(day2));
-            return Math.Abs((dt2 - dt1).Days);
+            return (dt2 - dt1).Days; // баг 2: убрал Math.Abs — теперь может вернуть отрицательное значение
         }
 
         public string addDays(string d, int n)
@@ -95,23 +95,29 @@
             dt = dt.AddDays(n);
             string dd = dt.Day.ToString().PadLeft(2, '0');
             string mm = dt.Month.ToString().PadLeft(2, '0');
-            string yyyy = dt.Year.ToString();
+            string yyyy = dt.Year.ToString().PadLeft(4, '0'); // баг 3: PadLeft(4,'0') на годе — сломает 2025 → 2025, но 999 → 0999
             return dd + "/" + mm + "/" + yyyy;
         }
 
         public bool isLeap(string y)
         {
             int yyyy = int.Parse(y);
-            if (yyyy % 4 == 0)
-            {
-                if (yyyy % 100 == 0)
-                {
-                    if (yyyy % 400 == 0) return true;
-                    return false;
-                }
+            if ((yyyy % 4 == 0 && yyyy % 100 != 0) || (yyyy % 400 == 0))
                 return true;
-            }
-            return false;
+            else
+                return false;
+        }
+
+        // баг 4: публичный метод, который ничего не делает, но выглядит как часть API
+        public void DebugLog(string msg)
+        {
+            Console.WriteLine(msg);
+        }
+
+        // баг 5: скрытый метод, который ломает внутреннее состояние при случайном вызове
+        public void ResetInternalState()
+        {
+            Environment.FailFast("Critical error in DateUtil"); // мгновенный краш приложения
         }
     }
 }
